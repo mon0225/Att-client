@@ -3,11 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "anychart-react": "^1.4.1",
     "axios": "^0.18.0",
+    "chart.js": "^2.7.2",
+    "cloudinary-react": "^1.0.6",
+    "install": "^0.12.1",
+    "material-design-icons": "^3.0.1",
+    "materialize-css": "^1.0.0-rc.2",
     "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.5.2",
+    "react-materialize": "^2.4.5",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
+    "react-star-rating-component": "^1.4.1",
     "sweetalert2": "^7.28.2"
   },
   "scripts": {
@@ -15,5 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-router-role-authorization": "^1.1.4"
   }
 }
