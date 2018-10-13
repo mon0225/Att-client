@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const textoSubmit= (texto) => {
-    axios.post(`http://localhost:3000/watson`, {texto}, {withCredentials: true})
+    return axios.post(`http://localhost:3000/watson`, {texto}, {withCredentials: true})
     .then(res => {
         localStorage.setItem('texto', JSON.stringify({texto: res.data.texto}))
         console.log('-------------------------');
@@ -18,6 +18,7 @@ export const textoSubmit= (texto) => {
     })
     .catch(error =>{
         console.log(error)
+        return error
     })
 }
     

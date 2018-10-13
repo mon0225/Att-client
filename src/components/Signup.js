@@ -24,6 +24,7 @@ class Signup extends Component {
         event.preventDefault()
         const {username, password, email} = this.state
         signupUser(username, password, email)
+        this.setState({user: username})
     }
     componentWillMount(){
         const user = localStorage.getItem('user')
@@ -34,13 +35,13 @@ class Signup extends Component {
 
     checkUser= ()=> {
         return (this.state.user === '') ?
-        <div className="align-middle">
-            <div className=" col s12 m8 l4">
-                <div className="card col s12 m8 l6 w-75 p-3">
+        <div className="mx-auto">
+            <div className="col">
+                <div className="card col s12 m8 l6 mx-auto" style={{width: 900, height:400, }}>
                     <br/>
-                    <form onSubmit={this.handleSubmit}>
+                    <form className="center-align" onSubmit={this.handleSubmit}>
                         <div className="form-group col s12 m8 l6 w-76 p-3 d-flex align-content-start flex-wrap align-middle">
-                            <i className="material-icons small">account_circle</i>
+                            <i className="material-icons small center-align">account_circle</i>
                             <label className="text-lg-center" htmlFor="exampleInputPassword1">Username</label>
                             <input className= "shadow p-2 mb-3 bg-black rounded" type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange}  />
                         </div>
@@ -56,19 +57,20 @@ class Signup extends Component {
                         </div>
                         <div className="inline-block">
                             <button type="submit" className="btn btn-black border-rounded align-middle">Signup</button>
-                            <br/>
-                            <button type="submit" className="btn btn-black border-rounded align-middle"> <Link to="/signupAdmin" className="admin">Admin</Link></button>
                         </div>     
                     </form>              
                 </div>
             </div> 
         </div> : 
-        <Redirect to= '/user' />
+        <Redirect to= '/login' />
 
     }
-
     render(){
-        return <div>{this.checkUser()}</div>
+        return(
+        <div>
+        <div>{this.checkUser()}</div>
+        </div>
+        )
     }
 }
 

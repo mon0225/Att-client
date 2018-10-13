@@ -16,6 +16,13 @@ export const signupUser = (username, password, email) => {
     }))
 }
 
+export const isAllowed = (user, rights) =>
+axios.post(rights.some(right => user.rights.includes(right)))
+  
+
+export const hasRole = (user, roles) =>
+  roles.some(role => user.roles.includes(role));
+
 /*export const signupAdmin = (username, clave) => {
     axios.post('http://localhost:3000/auth/signup', {username,clave}, { withCredentials: true})
     .then( res => swal({
@@ -34,18 +41,18 @@ export const loginUser = (username, password) => {
     console.log(username, password)
     axios.post(`http://localhost:3000/auth/login`, {username,password}, {withCredentials: true})
     .then(res => { 
+        localStorage.setItem('isLoggedin', true)
         swal({
         title: 'Bienvenido',
         type: 'success',
         text: res.data.username
         }).then((result)=>{
-        localStorage.setItem('user', JSON.stringify({ username: res.data.username }))
-        localStorage.setItem('role', JSON.stringify({ role: res.data.role}))
+            
+            localStorage.setItem('username', res.data.username)
+            localStorage.setItem('role', res.data.role)
+            
         //localStorage.setItem('user', res.data.username )
-       
         })
-
-        
     })
     .catch(error=> swal({
         title:'Error',
@@ -82,10 +89,21 @@ export const loginUser = (username, password) => {
 }*/
 
 export const Logout = () => {
+    localStorage.removeItem('isLoggedin')
     axios.get(`http://localhost:3000/auth/logout`, { withCredentials: true})
     .then(res=>{
-        localStorage.removeItem('user')
-        console.log(res)
+        
+        swal({
+            title:'Logout',
+            type: 'success',
+            text: 'Has salido exitosamente de la aplicación'
+        }).then((result)=>{
+            localStorage.removeItem('user')
+            localStorage.removeItem('role')
+            
+            console.log(res)
+        })
+        
     })
     .catch(error=>{
         console.log(error)
@@ -98,6 +116,7 @@ export const Loggedin = () => {
     axios.get(`http://localhost:3000/auth/loggedin`, {withCredentials: true})
     .then(res=>{
         localStorage.setItem('user', JSON.stringify({username: res.data.username}))
+        localStorage.setItem('user', JSON.stringify({role: res.data.role}))
     })
     .catch(error => {
         console.log(error)

@@ -12,7 +12,7 @@ export default class Admin extends React.Component{
                         <GridAdmin />
                     </div>
                     <div className="col s12 m7 l7">
-                        <MainAdmin />
+                        <MainAdmin id={this.props.match.params.id} />
                     </div>
                 </div>
             </div> 
