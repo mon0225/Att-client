@@ -99,15 +99,6 @@ class MainUser extends React.Component{
                                         <img src="/stickies/superstickies (1).png" alt="agenda2" width="200px" height="200px"/>
                                     </form>
                                 </div>
-
-                                <a id="menu" class="waves-effect waves-light btn btn-floating" ><i class="material-icons">menu</i></a>
-
-                                <div class="tap-target" data-target="menu">
-                                  <div class="tap-target-content">
-                                    <h5>Title</h5>
-                                    <p>A bunch of text</p>
-                                  </div>
-                                </div>
                                 </div>
                             </div>
                         </div>
